@@ -10,6 +10,18 @@ const StudentView = (props) => {
   const { student } = props;
 
   // Render a single Student view 
+  if (!student.campus) {
+    return (
+    <div>
+      <h1>{student.firstname + " " + student.lastname}</h1>
+      <p>Not currently enrolled in college</p>
+      <img src={student.imageUrl} height="200" alt="" />
+      <h3>{"Email: " + student.email}</h3>
+      <h3>{"GPA: " + student.gpa}</h3>
+    </div>
+    );
+  }
+
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
