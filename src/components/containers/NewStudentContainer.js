@@ -23,7 +23,6 @@ class NewStudentContainer extends Component {
       campusId: null, 
       gpa: null,
       email: "",
-      imageUrl: "https://img2.storyblok.com/fit-in/1200x630/f/64062/992x736/b1f6d2c25f/campus-a1.jpg",
       redirect: false, 
       redirectId: null
     };
@@ -59,7 +58,7 @@ class NewStudentContainer extends Component {
       campusId: null, 
       gpa: null,
       email: "",
-      imageUrl: "https://img2.storyblok.com/fit-in/1200x630/f/64062/992x736/b1f6d2c25f/campus-a1.jpg",
+      imageUrl: null,
       redirect: true, 
       redirectId: newStudent.id
     });
