@@ -29,24 +29,3 @@ const allCampuses = (state = [], action) => {  // Empty array as default Initial
 };
 
 export default allCampuses;
-/*
-const allStudents = (state=[], action) => {  // Empty array as default Initial State
-  switch (action.type) {
-    case at.FETCH_ALL_STUDENTS:
-      return action.payload;
-    case at.ADD_STUDENT:
-      return [...state, action.payload]
-    case at.DELETE_STUDENT:
-      return state.filter(student => student.id!==action.payload);
-    case at.EDIT_STUDENT:
-      return state.map(student => { 
-        return (
-          student.id===action.payload.id ? action.payload : student
-        );
-      });
-    default:
-      // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
-      return state;
-  }
-};
-*/

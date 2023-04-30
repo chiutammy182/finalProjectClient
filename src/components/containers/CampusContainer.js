@@ -24,7 +24,11 @@ class CampusContainer extends Component {
     return (
       <div>
         <Header />
-        <CampusView campus={this.props.campus} />
+        <CampusView 
+          campus={this.props.campus} 
+          //editStudent={this.props.editStudent}
+          
+        />
       </div>
     );
   }
@@ -43,6 +47,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+   // editStudent: (campus) => dispatch(editStudentThunk(campus)),
   };
 };
 

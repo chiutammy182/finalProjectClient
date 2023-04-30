@@ -18,6 +18,10 @@ const StudentView = (props) => {
       <img src={student.imageUrl} height="200" alt="" />
       <h3>{"Email: " + student.email}</h3>
       <h3>{"GPA: " + student.gpa}</h3>
+      <Link to={`/editstudent/${student.id}`}>
+        <button>Edit Student Information</button>
+      </Link>
+      <br/><br/>
     </div>
     );
   }
@@ -31,6 +35,10 @@ const StudentView = (props) => {
       <img src={student.imageUrl} height="200" alt="" />
       <h3>{"Email: " + student.email}</h3>
       <h3>{"GPA: " + student.gpa}</h3>
+      <Link to={`/editstudent/${student.id}`}>
+        <button>Edit Student Information</button>
+      </Link>
+      <br/><br/>
 
     </div>
   );
