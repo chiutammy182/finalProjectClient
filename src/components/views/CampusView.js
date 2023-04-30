@@ -17,6 +17,11 @@ const CampusView = (props) => {
       <p>{campus.address}</p>
       <p>{campus.description}</p>
       <img src={campus.imageUrl} height="300" alt=""/>
+      <br/>
+      <br/>
+      <Link to={`/editcampus/${campus.id}`}>
+          <button>Edit Campus Information</button>
+      </Link>
       {campus.students.map( student => {
         let name = student.firstname + " " + student.lastname;
         return (
@@ -24,7 +29,6 @@ const CampusView = (props) => {
             <Link to={`/student/${student.id}`}>
               <h2>{name}</h2>
             </Link> 
-           
           </div>
         );
       })}
