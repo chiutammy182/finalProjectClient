@@ -3,7 +3,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import EditStudentView from '../views/EditStudentView';
+import  EditStudentView from '../views/EditStudentView';
+//import CampusView from '../views/CampusView';
 import { editStudentThunk } from '../../store/thunks';
 
 class EditStudentContainer extends Component {
@@ -31,17 +32,19 @@ class EditStudentContainer extends Component {
   // Take action after user click the submit button
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
+    let student = {};
+    if(this.state.gpa==="")
+      student.gpa= null;
+    else student.gpa= this.state.gpa;
+    if(this.state.campusId==="") {student.campusId= null;}
+    else {student.campusId=this.state.campusId;}
 
-    let student = {
-        firstname: this.state.firstname,
-        lastname: this.state.lastname,
-        campusId: this.state.campusId,
-        gpa: this.state.gpa,
-        email: this.state.email,
-        imageUrl: this.state.imageUrl,
-        id: this.props.student.id
-    };
-    
+        student.firstname= this.state.firstname;
+        student.lastname= this.state.lastname;
+        student.email=this.state.email;
+        student.imageUrl=this.state.imageUrl;
+        student.id= this.props.student.id;       
+
     // Update student in back-end database
     await this.props.editStudent(student);
 
@@ -79,6 +82,7 @@ class EditStudentContainer extends Component {
           handleSubmit={this.handleSubmit}   
           student={this.props.student}
         />
+        {/* <CampusView student={this.props.student} /> */}
       </div>          
     );
   }
