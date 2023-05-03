@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import  EditStudentView from '../views/EditStudentView';
-//import CampusView from '../views/CampusView';
 import { editStudentThunk } from '../../store/thunks';
 
 class EditStudentContainer extends Component {
@@ -82,7 +81,6 @@ class EditStudentContainer extends Component {
           handleSubmit={this.handleSubmit}   
           student={this.props.student}
         />
-        {/* <CampusView student={this.props.student} /> */}
       </div>          
     );
   }
