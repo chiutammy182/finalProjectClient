@@ -8,9 +8,25 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus,editStudent} = props;
+  const {campus,editStudent, handleDeleteCampus} = props;
 
   // Render a single Campus view with list of its students
+  if(campus.students.length<=0)
+  return(
+    <div>
+      <h1>{campus.name}</h1>
+      <p>{campus.address}</p>
+      <p>{campus.description}</p>
+      <img src={campus.imageUrl} height="300" alt=""/>
+      <br/>
+      <br/>
+      <Link to={`/editcampus/${campus.id}`}>
+          <button>Edit Campus Information</button>
+      </Link>
+      <h3>No enrolled students.</h3>
+      <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
+    </div>
+  )
   return (
     <div>
       <h1>{campus.name}</h1>
@@ -22,6 +38,7 @@ const CampusView = (props) => {
       <Link to={`/editcampus/${campus.id}`}>
           <button>Edit Campus Information</button>
       </Link>
+      
       {campus.students.map( student => {
         let name = student.firstname + " " + student.lastname;
         return (
@@ -29,10 +46,11 @@ const CampusView = (props) => {
             <Link to={`/student/${student.id}`}>
               <h2>{name}</h2>
             </Link> 
-
-  <button onClick={() => {editStudent({...student, campusId: null});window.location.reload()}}>  
+            <button onClick={() => {editStudent({...student, campusId: null});window.location.reload()}}>  
              Unenroll Student </button>   
-           </div> 
+            <br/><br/>
+            <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
+          </div> 
         );
       })}
     </div>
