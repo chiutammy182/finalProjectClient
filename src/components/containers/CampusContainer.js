@@ -8,10 +8,17 @@ If needed, it also defines the component's "connect" function.
 import Header from './Header';
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { editStudentThunk, fetchCampusThunk } from "../../store/thunks";
-import { CampusView } from "../views";
 import { Redirect } from 'react-router-dom';
+import { editStudentThunk, fetchCampusThunk, deleteCampusThunk } from "../../store/thunks";
+import { CampusView } from "../views";
 class CampusContainer extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+     redirect: false
+    };
+  }
 
   // Get the specific campus data from back-end database
   componentDidMount() {
@@ -19,8 +26,21 @@ class CampusContainer extends Component {
     this.props.fetchCampus(this.props.match.params.id);
   }
 
+  handleDeleteCampus = (campus) => {
+    this.props.deleteCampus(campus);
+    this.setState({
+    redirect: true, 
+  });
+}
+componentWillUnmount() {
+  this.setState({redirect: false});
+}
+
   // Render a Campus view by passing campus data as props to the corresponding View component
   render() {
+
+    if(this.state.redirect) {
+      return (<Redirect to={`/campuses`}/>) }
    
     return(
       <div>
@@ -28,6 +48,7 @@ class CampusContainer extends Component {
         <CampusView 
           campus={this.props.campus} 
           editStudent={this.props.editStudent}
+         handleDeleteCampus={this.handleDeleteCampus}
         />
       </div>
       
@@ -49,6 +70,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
     editStudent: (student) => dispatch(editStudentThunk(student)),
+    deleteCampus: (campus) => dispatch(deleteCampusThunk(campus)),
 
   };
 };
