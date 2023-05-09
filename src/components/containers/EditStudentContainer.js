@@ -32,9 +32,8 @@ class EditStudentContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
     let student = {};
-    if(this.state.gpa==="")
-      student.gpa= null;
-    else student.gpa= this.state.gpa;
+    if(this.state.gpa==="")   {student.gpa= null;}
+    else {student.gpa = this.state.gpa;}
     if(this.state.campusId==="") {student.campusId= null;}
     else {student.campusId=this.state.campusId;}
 

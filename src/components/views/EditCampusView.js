@@ -29,7 +29,7 @@ const useStyles = makeStyles( () => ({
 }));
 
 const EditStudentView = (props) => {
-  const {handleChange, handleSubmit, campus } = props;
+  const {handleChange, handleSubmit, campus} = props;
   const classes = useStyles();
 
   // Render a edit in Campus view with an input form
@@ -46,12 +46,12 @@ const EditStudentView = (props) => {
           </div>
           <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
             <label style= {{color:'#11153e', fontWeight: 'bold'}}>Name: </label>
-            <input type="text" name="name" defaultValue={campus.name} onChange ={(e) => handleChange(e)} />
+            <input type="text" name="name" defaultValue={campus.name} required = "true" onChange ={(e) => handleChange(e)} />
             <br/>
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Address: </label>
-            <input type="text" name="address" defaultValue={campus.address} onChange={(e) => handleChange(e)} />
+            <input type="text" name="address" defaultValue={campus.address} required = "true" onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
