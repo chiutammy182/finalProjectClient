@@ -8,7 +8,16 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus,editStudent, handleDeleteCampus} = props;
+  const {campus, editStudent, handleDeleteCampus } = props;
+
+//   handleEnrollment = (event) => {
+//     students.map(student => student.firstname + " " +student.lastname === studentName)
+
+//     let enrollStudent = event.target.studentEnroll.value;
+//   let foundStudent = students.find(student => student.firstname+ " "+student.lastname === enrollStudent);
+//   foundStudent.campusId = campus.id;
+//   editStudent(foundStudent);
+// }
 
   // Render a single Campus view with list of its students
   if(campus.students.length<=0)
@@ -25,6 +34,9 @@ const CampusView = (props) => {
       </Link>
       <h3>No enrolled students.</h3>
       <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
+      <Link to={`/newstudent`}>
+        <button>Add New Student</button>
+      </Link>
     </div>
   )
   return (
@@ -50,9 +62,21 @@ const CampusView = (props) => {
              Unenroll Student </button>   
             <br/><br/>
             <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
+              
           </div> 
         );
       })}
+      <Link to={`/newstudent`}>
+        <button>Enroll New Student</button>
+      </Link>
+      <Link to={`/students`}>
+        <button>Enroll Existing Student</button>
+      </Link>
+     
+      
+      
+      <br/>
+      <br/>
     </div>
   );
 };

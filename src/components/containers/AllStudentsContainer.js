@@ -12,7 +12,7 @@ import { withRouter } from "react-router-dom";
 
 import { 
   fetchAllStudentsThunk,
-  deleteStudentThunk
+  deleteStudentThunk,
 } from '../../store/thunks';
 
 import AllStudentsView from '../views/AllStudentsView';
@@ -22,7 +22,7 @@ class AllStudentsContainer extends Component {
   componentDidMount() {
     this.props.fetchAllStudents();
   }
-
+ 
   // Render All Students view by passing all students data as props to the corresponding View component
   render(){
     return(
@@ -32,6 +32,7 @@ class AllStudentsContainer extends Component {
           students={this.props.allStudents}
           deleteStudent={this.props.deleteStudent}   
         />
+        
       </div>
     )
   }
