@@ -16,7 +16,7 @@ class CampusContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-     redirect: false
+     redirect: false,
     };
   }
 
@@ -29,9 +29,10 @@ class CampusContainer extends Component {
   handleDeleteCampus = (campus) => {
     this.props.deleteCampus(campus);
     this.setState({
-    redirect: true, 
+    redirect: true,  
   });
 }
+
 componentWillUnmount() {
   this.setState({redirect: false});
 }
@@ -41,14 +42,14 @@ componentWillUnmount() {
 
     if(this.state.redirect) {
       return (<Redirect to={`/campuses`}/>) }
-   
+    
     return(
       <div>
-        <Header />
+        <Header /> 
         <CampusView 
           campus={this.props.campus} 
           editStudent={this.props.editStudent}
-         handleDeleteCampus={this.handleDeleteCampus}
+          handleDeleteCampus={this.handleDeleteCampus}
         />
       </div>
       
@@ -71,7 +72,6 @@ const mapDispatch = (dispatch) => {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
     editStudent: (student) => dispatch(editStudentThunk(student)),
     deleteCampus: (campus) => dispatch(deleteCampusThunk(campus)),
-
   };
 };
 
