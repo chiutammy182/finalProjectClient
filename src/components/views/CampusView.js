@@ -61,11 +61,10 @@ const CampusView = (props) => {
             <button onClick={() => {editStudent({...student, campusId: null});window.location.reload()}}>  
              Unenroll Student </button>   
             <br/><br/>
-            <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
-              
           </div> 
         );
       })}
+       <button onClick={() => handleDeleteCampus(campus.id)}>Delete Campus</button>
       <Link to={`/newstudent`}>
         <button>Enroll New Student</button>
       </Link>
